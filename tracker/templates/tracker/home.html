@@ -1,0 +1,9 @@
+{% extends 'tracker/base.html' %}
+
+{% block content %}
+{% if user.is_authenticated %}
+<div class="container"> 
+    {% include 'tracker/messages.html' %}
+</div>
+{% endif %}
+{% endblock %}

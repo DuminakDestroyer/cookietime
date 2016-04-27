@@ -1,0 +1,10 @@
+{% extends 'tracker/base.html' %}
+
+{% block content %}
+ {% if user.is_authenticated %}
+<div class="col-md-8 col-xs-8 col-md-offset-2 col-xs-offset-2 ">
+      	<div id ="chart_div"></div>
+  
+    </div>
+{% endif %}
+{% endblock %}

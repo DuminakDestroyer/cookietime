@@ -1,0 +1,13 @@
+{
+  "extends": "airbnb",
+  "parser": "babel-eslint",
+  "rules": {
+    "no-empty-label": 0,
+    "space-after-keywords": 0,
+    "space-before-keywords": 0,
+    "space-return-throw-case": 0,
+    "no-labels": 2,
+    "keyword-spacing": 2,
+    "react/prefer-stateless-function": 0
+  }
+}

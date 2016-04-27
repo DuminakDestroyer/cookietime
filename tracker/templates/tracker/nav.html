@@ -1,0 +1,23 @@
+	<nav class="navbar navbar-inverse navbar-static-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+         <div>
+            {% for c in company %}
+            <h3><a href = "http://{{ c.company_link }}" target="_blank">
+					    {{ c.company_name }}
+					{% endfor %}</a></h3>
+   </div>
+    </div>
+{% if user.is_authenticated %}
+    <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Signed in as {{employee}}<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="{% url 'django.contrib.auth.views.logout' %}">Log Out</a></li>
+          </ul>
+        </li>
+      </ul>
+     {% endif %}
+
+  </div>
+</nav>

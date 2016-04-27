@@ -1,0 +1,66 @@
+    <div class="col-md-8 col-xs-8 col-md-offset-2 col-xs-offset-2 panel panel-default">
+    			<div id = "board">
+              <form method = "POST" action = ".">
+					     <div id = "message_form">
+
+                  <div class="input-group">
+                  {% csrf_token %}
+                  {% if type == 'I'%}
+                  <input type="text" class="form-control" name = "message" placeholder="Goodbye!">
+                  <input type = "hidden" name = "type" value = "O">
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit">Out</button>
+                  </span>
+                  {% else %}
+                  <input type="text" class="form-control"  name = "message" placeholder="Hi!">
+                  <input type = "hidden" name = "type" value = "I">
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit">In</button>
+                  </span>
+                  {% endif %}
+                </div>
+             </div>
+          </form>
+          <div class="panel-body" id = "message_board">
+           {% if type == 'I' and seconds > 0 %}
+          <h4 class = "timer text-center" id = "timer">Time Remaining: </h4>
+           {% else %}
+            <h4 class = "timer text-center" id = "timer">Done! Go get some rest!</h4>
+           {% endif %}
+          <div id = "mainContainer">
+          </div>
+        </div>
+ 
+				</div>
+              
+	</div>
+  <div class = " col-md-8 col-xs-8 col-md-offset-2 col-xs-offset-2">
+              <a href = "{% url 'logs' %}" class="btn btn-primary col-md-3 col-xs-3">Logs</a>
+              <button class="btn btn-primary col-md-3 col-xs-3 col-md-offset-1 col-xs-offset-1" type="submit">Leaves</button>
+              <button class="btn btn-primary col-md-3  col-xs-3 col-md-offset-1 col-xs-offset-1" type="submit">Offsets</button>
+              </div>
+
+<script>
+var seconds = {{seconds}};
+function timer() {
+    var days        = Math.floor(seconds/24/60/60);
+    var hoursLeft   = Math.floor((seconds) - (days*86400));
+    var hours       = Math.floor(hoursLeft/3600);
+    var minutesLeft = Math.floor((hoursLeft) - (hours*3600));
+    var minutes     = Math.floor(minutesLeft/60);
+    minutes = minutes.toPrecision(2);
+    var remainingSeconds = seconds % 60;
+    if (remainingSeconds < 10) {
+        remainingSeconds = "0" + remainingSeconds; 
+    }
+    remainingSeconds = remainingSeconds.toPrecision(2);
+    document.getElementById('timer').innerHTML = "Time Remaining: " + hours + ":" + minutes + ":" + remainingSeconds;
+    if (seconds == 0) {
+        clearInterval(countdownTimer);
+        document.getElementById('timer').innerHTML = "Done! Go get some rest!";
+    } else {
+        seconds--;
+    }
+}
+var countdownTimer = setInterval('timer()', 1000);
+</script>

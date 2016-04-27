@@ -1,0 +1,32 @@
+{% load staticfiles %}
+<head>
+	<title>Cookie</title>
+	   <link rel="stylesheet" href="{% static 'css/main.css' %}">
+	   <link rel="stylesheet" href ="{% static 'css/bootstrap.css'%}">
+	   <link rel="shortcut icon" href="{% static 'img/cookie.png'%}">
+   	   <link href="http://fonts.googleapis.com/css?family=Candal" rel="stylesheet" type="text/css">
+</head>
+	{% include 'tracker/nav.html'%}
+
+<body>
+    <div class="col-md-8 col-xs-8 col-md-offset-2 col-xs-offset-2 ">
+    	<h1 class = "text-center"><a href="{% url 'home' %}">Cookie Time Tracker</a></h1>
+	</div>
+             
+ {% block content %}
+ 
+
+ {% endblock %}
+
+
+ <script src = "{% static 'js/jquery.js'%}"></script>
+<script src = "{% static 'js/bootstrap.js'%}"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script src = "{% static 'js/chart.js'%}"></script>
+<script src=" {% static 'js/build.js' %}"></script>
+
+</body>
+
+<footer>
+	
+</footer>

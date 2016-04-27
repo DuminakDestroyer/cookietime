@@ -1,0 +1,28 @@
+/* Styles for Typography */
+h1 a {
+  font-family: 'Candal';
+  color: #663500; }
+
+h1 a:hover {
+  color: #663500; }
+
+h3 a {
+  font-family: 'Candal';
+  color: white; }
+
+h3 a:hover {
+  color: white; }
+
+/* Styles for paddings, margins, placement*/
+#chart_div {
+  margin-top: 2%; }
+
+.panel {
+  margin-top: 2%;
+  margin-bottom: 10%; }
+
+#message_form {
+  margin-top: 2%; }
+
+/* Styles for Components i.e. Buttons */
+/* Styles for mixins */
