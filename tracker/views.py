@@ -5,11 +5,13 @@ from django.contrib.auth.decorators import login_required
 from django.utils import timezone
 from django.core import serializers
 from django.http import HttpResponse
-import json
 from django.contrib.auth.decorators import login_required
-import time
 from datetime import timedelta
 from django.utils.timezone import utc
+import datetime
+import json
+import time
+
 
 @login_required
 def home(request):
@@ -31,16 +33,17 @@ def home(request):
 	employee = get_object_or_404(Employee, account=user)
 	logs = Log.objects.all().filter(employee = employee).order_by('-start')
 	if not logs:
-		print("No logs")
+		show= 'S'
 	else:
-		latest = logs[0]
-		current = timezone.now()
-		print(latest)
-		print(current)
-
+		latest = logs[0].start
+		if latest.date() <=timezone.now().date() and logs[0].end is not None:
+			show = 'N'
+		else:
+			show = 'S'
 	shift = employee.shift_length
 	if not logs:
-			log_type = 'I'
+			log_type = 'O'
+			seconds = 0
 	else:
 		if logs[0].end is None:
 			log_type = 'I'
@@ -48,11 +51,11 @@ def home(request):
 		else:
 			log_type = 'O'
 			timer= logs[0].start
-	end = timer + timedelta(hours=shift)
-	now = timezone.now()
-	timediff = end - now
-	seconds =  timediff.total_seconds()
-	return render(request, 'tracker/home.html', {'user': user, 'company': company, 'employee' : employee,  'logs' : logs, "type" : log_type, "shift" : shift, 'seconds' : seconds})
+		end = timer + timedelta(hours=shift)
+		now = timezone.now()
+		timediff = end - now
+		seconds =  timediff.total_seconds()
+	return render(request, 'tracker/home.html', {'user': user, 'company': company, 'employee' : employee,  'logs' : logs, "type" : log_type, "shift" : shift, 'seconds' : seconds, 'show': show})
 
 @login_required
 def logs(request):

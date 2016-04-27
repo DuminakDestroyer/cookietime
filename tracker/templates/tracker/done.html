@@ -1,0 +1,22 @@
+    <div class="col-md-8 col-xs-8 col-md-offset-2 col-xs-offset-2 panel panel-default">
+    			<div id = "board">
+
+          <div class="panel-body" id = "message_board">
+           {% if type == 'I' and seconds > 0 %}
+          <h4 class = "timer text-center" id = "timer">Time Remaining: </h4>
+           {% else %}
+            <h4 class = "timer text-center" id = "timer">You are not timed-in!</h4>
+           {% endif %}
+          <div id = "mainContainer">
+          </div>
+        </div>
+ 
+				</div>
+              
+	</div>
+  {% include 'tracker/bottom_nav.html' %}
+  {% include 'tracker/leave_form.html' %}
+  {% include 'tracker/offset_form.html' %}
+
+
+ 

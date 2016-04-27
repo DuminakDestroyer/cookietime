@@ -1,11 +1,12 @@
     <div class="col-md-8 col-xs-8 col-md-offset-2 col-xs-offset-2 panel panel-default">
     			<div id = "board">
+            {% if show == 'S' %}
               <form method = "POST" action = ".">
 					     <div id = "message_form">
 
                   <div class="input-group">
                   {% csrf_token %}
-                  {% if type == 'I'%}
+                  {% if type == 'I' %}
                   <input type="text" class="form-control" name = "message" placeholder="Goodbye!">
                   <input type = "hidden" name = "type" value = "O">
                   <span class="input-group-btn">
@@ -21,11 +22,16 @@
                 </div>
              </div>
           </form>
+          {% endif %}
           <div class="panel-body" id = "message_board">
-           {% if type == 'I' and seconds > 0 %}
+           {% if type == 'I' and seconds > 0 and show == 'S' %}
           <h4 class = "timer text-center" id = "timer">Time Remaining: </h4>
            {% else %}
-            <h4 class = "timer text-center" id = "timer">You are not timed-in!</h4>
+              {% if show == 'N' %}
+                 <h4 class = "timer text-center" id = "timer">You already have a log for today!</h4>
+              {% else %}
+                <h4 class = "timer text-center" id = "timer">You are not timed-in!</h4>
+              {% endif %}
            {% endif %}
           <div id = "mainContainer">
           </div>
@@ -38,8 +44,7 @@
   {% include 'tracker/leave_form.html' %}
   {% include 'tracker/offset_form.html' %}
 
-
- {% if type == 'I' and seconds > 0 %}
+ {% if type == 'I' and seconds > 0 and show == 'S' %}
 <script>
 var seconds = {{seconds}};
 function timer() {
@@ -78,3 +83,4 @@ function timer() {
 var countdownTimer = setInterval('timer()', 1000);
 </script>
   {% endif %}
+ 
