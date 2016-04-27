@@ -1,0 +1,28 @@
+$top_distance: 2%;
+$bottom_distance: 10%;
+$side_distance: 5%;
+
+#chart_div{
+	margin-top: $top_distance;
+}
+
+.panel{
+	height: 450px;
+	margin-top: $top_distance;
+	margin-bottom: $bottom_distance;
+}
+
+#message_form{
+	margin-top:$top_distance;
+}
+
+.commentAuthor{
+		margin-bottom: 10px;
+}
+
+.message{
+	margin-left: 25px;
+}
+.log_time{
+	margin-left: 25px;
+}

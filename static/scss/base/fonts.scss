@@ -1,0 +1,41 @@
+$cookie-brown: #663500;
+$segment-brown:  #996633;
+
+h1{ 
+	a {
+    font-family: 'Candal';
+    color: $cookie-brown;
+	}
+	a:hover{
+	color: $cookie-brown;
+	}
+}
+
+
+h3{ 
+	a {
+    font-family: 'Candal';
+    color: white;
+	}
+	a:hover{
+	color: white;
+	}
+}
+
+.log_time{
+	color:$cookie-brown;
+	font-size: 10px;
+}
+
+.message{
+	font-size: 14px;
+}
+
+.timer{
+	color:$segment-brown;
+}
+
+.commentAuthor{
+	background-color: $segment-brown;
+	color: white;
+}

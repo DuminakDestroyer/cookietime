@@ -1,0 +1,19 @@
+$cookie-brown: #663500;
+$bg: #ffd9b3;
+
+.panel{
+	overflow-y: scroll;
+}
+
+
+tbody {
+    overflow-y: auto;
+}
+
+body{
+	background-color: $bg;
+}
+
+.commentAuthor{
+	padding: 7px;
+}

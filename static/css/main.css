@@ -1,0 +1,64 @@
+/* Styles for Typography */
+h1 a {
+  font-family: 'Candal';
+  color: #663500; }
+
+h1 a:hover {
+  color: #663500; }
+
+h3 a {
+  font-family: 'Candal';
+  color: white; }
+
+h3 a:hover {
+  color: white; }
+
+.log_time {
+  color: #663500;
+  font-size: 10px; }
+
+.message {
+  font-size: 14px; }
+
+.timer {
+  color: #996633; }
+
+.commentAuthor {
+  background-color: #996633;
+  color: white; }
+
+/* Styles for paddings, margins, placement*/
+#chart_div {
+  margin-top: 2%; }
+
+.panel {
+  height: 450px;
+  margin-top: 2%;
+  margin-bottom: 10%; }
+
+#message_form {
+  margin-top: 2%; }
+
+.commentAuthor {
+  margin-bottom: 10px; }
+
+.message {
+  margin-left: 25px; }
+
+.log_time {
+  margin-left: 25px; }
+
+/* Styles for Components i.e. Buttons */
+.panel {
+  overflow-y: scroll; }
+
+tbody {
+  overflow-y: auto; }
+
+body {
+  background-color: #ffd9b3; }
+
+.commentAuthor {
+  padding: 7px; }
+
+/* Styles for mixins */
