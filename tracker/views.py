@@ -27,7 +27,7 @@ def home(request):
 			log.save()
 		else:
 			Log.objects.create(employee=employee, start=timezone.now(), start_message=message)
-		return redirect("http://localhost:8002/")
+		return redirect("https://cookietime.herokuapp.com/")
 	company = Company.objects.all()
 	user = request.user
 	employee = get_object_or_404(Employee, account=user)
