@@ -50,7 +50,9 @@ def home(request):
 def logs(request):
 	user = request.user
 	company = Company.objects.all()
-	return render(request, 'tracker/logs.html', {'user': user, 'company': company,})
+	employee = get_object_or_404(Employee, account=user)
+	logs = Log.objects.all().filter(employee = employee).order_by('-start')
+	return render(request, 'tracker/logs.html', {'user': user, 'employee' : employee,'company': company, 'logs':logs})
 
 @login_required
 def messages(request):

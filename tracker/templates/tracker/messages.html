@@ -25,7 +25,7 @@
            {% if type == 'I' and seconds > 0 %}
           <h4 class = "timer text-center" id = "timer">Time Remaining: </h4>
            {% else %}
-            <h4 class = "timer text-center" id = "timer">Done! Go get some rest!</h4>
+            <h4 class = "timer text-center" id = "timer">You are not timed-in!</h4>
            {% endif %}
           <div id = "mainContainer">
           </div>
@@ -34,12 +34,12 @@
 				</div>
               
 	</div>
-  <div class = " col-md-8 col-xs-8 col-md-offset-2 col-xs-offset-2">
-              <a href = "{% url 'logs' %}" class="btn btn-primary col-md-3 col-xs-3">Logs</a>
-              <button class="btn btn-primary col-md-3 col-xs-3 col-md-offset-1 col-xs-offset-1" type="submit">Leaves</button>
-              <button class="btn btn-primary col-md-3  col-xs-3 col-md-offset-1 col-xs-offset-1" type="submit">Offsets</button>
-              </div>
+  {% include 'tracker/bottom_nav.html' %}
+  {% include 'tracker/leave_form.html' %}
+  {% include 'tracker/offset_form.html' %}
 
+
+ {% if type == 'I' and seconds > 0 %}
 <script>
 var seconds = {{seconds}};
 function timer() {
@@ -48,12 +48,25 @@ function timer() {
     var hours       = Math.floor(hoursLeft/3600);
     var minutesLeft = Math.floor((hoursLeft) - (hours*3600));
     var minutes     = Math.floor(minutesLeft/60);
-    minutes = minutes.toPrecision(2);
+    minutes = minutes;
+
+    if(hours < 10){
+      hours = "0"+hours;
+    }
+
+    if(minutes < 10){
+      minutes = "0"+minutes;
+    }
+
     var remainingSeconds = seconds % 60;
     if (remainingSeconds < 10) {
         remainingSeconds = "0" + remainingSeconds; 
     }
-    remainingSeconds = remainingSeconds.toPrecision(2);
+    remainingSeconds = Math.floor(remainingSeconds);
+    if(remainingSeconds < 10){
+     remainingSeconds = "0"+remainingSeconds;
+    }
+
     document.getElementById('timer').innerHTML = "Time Remaining: " + hours + ":" + minutes + ":" + remainingSeconds;
     if (seconds == 0) {
         clearInterval(countdownTimer);
@@ -64,3 +77,4 @@ function timer() {
 }
 var countdownTimer = setInterval('timer()', 1000);
 </script>
+  {% endif %}
