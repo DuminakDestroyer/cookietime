@@ -30,9 +30,17 @@ def home(request):
 	user = request.user
 	employee = get_object_or_404(Employee, account=user)
 	logs = Log.objects.all().filter(employee = employee).order_by('-start')
+	if not logs:
+		print("No logs")
+	else:
+		latest = logs[0]
+		current = timezone.now()
+		print(latest)
+		print(current)
+
 	shift = employee.shift_length
 	if not logs:
-			log_type = 'O'
+			log_type = 'I'
 	else:
 		if logs[0].end is None:
 			log_type = 'I'
